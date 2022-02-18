@@ -1,0 +1,17 @@
+{
+    "name": "creativestyle/magesuite-bulk-goods-mollie-payment",
+    "description": "Bulk Goods integration form Mollie payment",
+    "type": "magento2-module",
+    "homepage": "https://creativestyle.de",
+    "license": "OSL-3.0",
+    "require": {
+        "mollie/magento2": "^2.6.0",
+        "creativestyle/magesuite-bulk-goods": "^2.0.0"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "MageSuite\\BulkGoodsMolliePayment\\": ""
+        }
+    }
+}

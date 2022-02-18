@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="mollie_before_build_transaction_orders_api">
+        <observer name="add_bulk_goods_fee_to_mollie_order" instance="MageSuite\BulkGoodsMolliePayment\Observer\AddFeeToMollieOrder" />
+    </event>
+
+</config>
