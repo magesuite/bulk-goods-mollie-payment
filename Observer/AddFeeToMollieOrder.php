@@ -4,13 +4,10 @@ namespace MageSuite\BulkGoodsMolliePayment\Observer;
 
 class AddFeeToMollieOrder implements \Magento\Framework\Event\ObserverInterface
 {
-    /**
-     * @var \MageSuite\BulkGoodsMolliePayment\Service\BulkFeeOrderLine
-     */
-    protected $bulkFeeOrderLine;
+    protected \MageSuite\BulkGoodsMolliePayment\Service\BulkFeeOrderLineCreator $bulkFeeOrderLine;
 
     public function __construct(
-        \MageSuite\BulkGoodsMolliePayment\Service\BulkFeeOrderLine $bulkFeeOrderLine
+        \MageSuite\BulkGoodsMolliePayment\Service\BulkFeeOrderLineCreator $bulkFeeOrderLine
     ) {
         $this->bulkFeeOrderLine = $bulkFeeOrderLine;
     }

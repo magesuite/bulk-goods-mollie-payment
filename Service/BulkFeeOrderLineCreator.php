@@ -2,32 +2,31 @@
 
 namespace MageSuite\BulkGoodsMolliePayment\Service;
 
-class BulkFeeOrderLine
+class BulkFeeOrderLineCreator
 {
-    /**
-     * @var \MageSuite\BulkGoods\Model\BulkGoods
-     */
-    protected $bulkGoods;
+    protected \MageSuite\BulkGoods\Model\BulkGoods $bulkGoods;
+    protected \Mollie\Payment\Helper\General $mollieHelper;
+    protected \Mollie\Payment\Service\Order\Lines\OrderLinesProcessor $orderLinesProcessor;
+    protected \Mollie\Payment\Model\OrderLinesFactory $orderLinesFactory;
 
-    /**
-     * @var \Mollie\Payment\Helper\General
-     */
-    protected $mollieHelper;
-
-    /**
-     * @var \Mollie\Payment\Service\Order\Lines\OrderLinesProcessor
-     */
-    protected $orderLinesProcessor;
-
-    /** @var \Mollie\Payment\Model\OrderLinesFactory */
-    protected $orderLinesFactory;
+    public function __construct(
+        \MageSuite\BulkGoods\Model\BulkGoods $bulkGoods,
+        \Mollie\Payment\Helper\General $mollieHelper,
+        \Mollie\Payment\Service\Order\Lines\OrderLinesProcessor $orderLinesProcessor,
+        \Mollie\Payment\Model\OrderLinesFactory $orderLinesFactory
+    ) {
+        $this->bulkGoods = $bulkGoods;
+        $this->mollieHelper = $mollieHelper;
+        $this->orderLinesFactory = $orderLinesFactory;
+        $this->orderLinesProcessor = $orderLinesProcessor;
+    }
 
     public function createBulkFeeOrderLine($order)
     {
         $fee = $order->getData(\MageSuite\BulkGoods\Model\BulkGoods::BULK_GOODS_FEE_CODE);
         $tax = $order->getData(\MageSuite\BulkGoods\Model\BulkGoods::BULK_GOODS_TAX_CODE);
 
-        if (empty($fee)) {
+        if (empty($fee) || $fee == 0) {
             return [];
         }
 
