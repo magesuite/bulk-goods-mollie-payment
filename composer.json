@@ -6,7 +6,7 @@
     "license": "OSL-3.0",
     "require": {
         "mollie/magento2": "^2.6.0",
-        "creativestyle/magesuite-bulk-goods": "^2.0.0"
+        "creativestyle/magesuite-bulk-goods": ">=2.0"
     },
     "autoload": {
         "files": [ "registration.php" ],
